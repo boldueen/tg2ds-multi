@@ -3,7 +3,8 @@
 # WEB-pages: uadd.me/mdpanf
 
 from aiogram import executor
-from utils import dp
+from utils.loader import dp
+from utils import telechan
 
 logo = f"""\033[92m
   ____ _ _ _       \033[33mby\033[92m          ____            _           _

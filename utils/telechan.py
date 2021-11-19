@@ -1,6 +1,4 @@
-import os
-
-from utils.loader import dp, tbot
+from utils.loader import dp
 from aiogram import types
 
 from utils.dischan import sendText, sendPhoto, sendVideo
@@ -17,18 +15,18 @@ async def parse(msg):
 @dp.channel_post_handler(content_types=types.ContentTypes.TEXT)
 async def text_in_channel(msg: types.Message):
     text = await parse(msg)
+    print("Here")
     await sendText(text)
 
 
 @dp.channel_post_handler(content_types=types.ContentTypes.PHOTO)
 async def photo_in_channel(msg: types.Message):
     text = ''
-    photo_path = f"{msg.chat.title}_{msg.message_id}.pic"
+    photo_path = f"{msg.chat.title}_{msg.message_id}.png"
     await msg.photo[-1].download(destination_file=photo_path)
     if 'caption' in msg:
         text = await parse(msg)
     await sendPhoto(text, photo_path)
-    os.remove(photo_path)
 
 
 @dp.channel_post_handler(content_types=types.ContentTypes.VIDEO)
@@ -39,7 +37,6 @@ async def video_in_channel(msg: types.Message):
     if 'caption' in msg:
         text = await parse(msg)
     await sendVideo(text, video_path)
-    os.remove(video_path)
 
 
 if __name__ == "__main__":

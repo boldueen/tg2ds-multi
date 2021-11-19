@@ -2,12 +2,17 @@ import requests
 from discord import Embed, Colour
 
 from data import config as c
-import utils
+from utils.loader import dbot, hooks
 
-utils.dbot.remove_command('help')
+dbot.remove_command('help')
 
 
-@utils.dbot.command()
+@dbot.command()
+async def test(ctx):
+    print(hooks.all_hooks())
+
+
+@dbot.command()
 async def armor(ctx):
     channel_id = ctx.message.guild.id
     webhook = await ctx.channel.create_webhook(name="Armor News",
@@ -22,16 +27,16 @@ async def armor(ctx):
                      icon_url="https://i.comss.pics/2021/11/19/photo_2021-09-22_01-20-48.jpg",
                      url="https://t.me/projectarmor")
     await ctx.channel.send(embed=embed)
-    print(channel_id, webhook.url)
+    hooks.add_hook(id=channel_id, link=webhook.url)
 
 
-@utils.dbot.command()
+@dbot.command()
 async def unarmor(ctx):
     channel_id = ctx.message.guild.id
-    print(channel_id)
+    hooks.delete_hook(id=channel_id)
 
 
-@utils.dbot.command()
+@dbot.command()
 async def help(ctx):
     text = "Это новостная лента от **«Project: Armor»**\n" \
            "Отправь команду **!armor** в текстовый канал, где хочешь получать новости!\n"\
@@ -49,6 +54,7 @@ async def help(ctx):
 
 if __name__ == "__main__":
     print("Discord reg bot")
-    utils.dbot.run(c.DS_TOKEN)
+    dbot.run(c.DS_TOKEN)
 
-# access = 536889344
+# access =
+# https://discordapp.com/oauth2/authorize?client_id=911300377591304313&scope=bot&permissions=536889344

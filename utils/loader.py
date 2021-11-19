@@ -4,11 +4,16 @@ from aiogram import Bot, Dispatcher
 from discord import Client
 from discord.ext import commands
 
+from data.database import Hooks
+
 tbot = Bot(token=c.TG_TOKEN)
 dp = Dispatcher(tbot)
 
 client = Client()
-dbot = commands.Bot(command_prefix='!/')
+dbot = commands.Bot(command_prefix='!')
+
+hooks = Hooks()
+hooks.create_table_hooks()  # Create table if not exist
 
 
 if __name__ == "__main__":
