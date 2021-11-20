@@ -8,8 +8,8 @@ WORKDIR ~/.cillum/tg2ds-multi
 
 COPY requirements.txt ./
 
-RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python3 -m venv ./venv/
+RUN ./venv/bin/pip3 install -r requirements.txt
 
-CMD [ "python", "./tgm.py"]
-CMD [ "python", "./disc.py"]
+
+CMD [ "bash", "./run.sh"]
