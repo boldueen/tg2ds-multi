@@ -26,7 +26,6 @@ dbot.remove_command('help')
 async def armor(ctx):
     try:
         channel_id = ctx.message.guild.id
-        print("Ladno")
         if hooks.get_hook(id=channel_id) is not None:
             logger.logging.debug("The hook exists")
             async with aiohttp.ClientSession() as session:
