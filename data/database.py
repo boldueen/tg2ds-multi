@@ -42,18 +42,19 @@ class Hooks:
         sql = "INSERT INTO Hooks(id, link) values(?, ?)"
         parameters = (id, link)
         self.execute(sql, parameters, commit=True)
-        return 1
-        # TODO добавить перезапись и возвращение значения 0, если произошла перезапись
 
     def delete_hook(self, id: int):
         sql = "DELETE FROM Hooks WHERE id=?"
         self.execute(sql, parameters=(id,), commit=True)
-        return 1
-        # TODO добавить проверку удаления и возвращение значения 0, если удаления не было
 
     def all_hooks(self):
         sql = "SELECT link FROM Hooks"
         data = self.execute(sql, fetchall=True)
+        return data
+
+    def get_hook(self, id: int):
+        sql = "SELECT link FROM Hooks WHERE id=?"
+        data = self.execute(sql, parameters=(id,), fetchone=True)
         return data
 
     def count_hooks(self):

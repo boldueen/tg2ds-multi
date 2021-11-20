@@ -6,7 +6,6 @@ logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(
                     )
 
 """
-
                          8888  8888888
                   888888888888888888888888
                8888:::8888888888888888888888888
