@@ -22,7 +22,6 @@ async def sendPhoto(text: str, photo_path: str):
         for url in urls:
             wh = Webhook.from_url(url, adapter=AsyncWebhookAdapter(session))
             e = Embed(title="📑 Новости", description=text, color=Colour.blue())
-            e.set_footer(text="Test", icon_url="https://i.comss.pics/2021/11/13/CillumLogo2f869011530d4a42.png")
             e.set_image(url=f"attachment://{photo_path}")
             await wh.send(embed=e, file=File(photo_path))
             os.remove(photo_path)
