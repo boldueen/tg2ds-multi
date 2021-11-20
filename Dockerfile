@@ -1,14 +1,9 @@
-FROM python:3.8
+FROM python:3.8-slim
 LABEL maintainer="t.me/cillum_project"
 RUN mkdir -p ~/.cillum/tg2ds_bot
-RUN mkdir -p ~/.cillum/tg2ds_bot/data
-RUN mkdir -p ~/.cillum/tg2ds_bot/utils
 WORKDIR ~/.cillum/tg2ds_bot/
-COPY data data
-COPY utils utils
-
 COPY . ./
 
-RUN python -m venv ./venv/
-RUN ./venv/bin/pip install -r requirements.txt
+RUN chmod +x run.sh
+RUN pip install --no-cache-dir -r requirements.txt
 CMD [ "bash", "./run.sh" ]

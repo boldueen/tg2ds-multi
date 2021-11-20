@@ -1,9 +1,13 @@
 from aiogram import types
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
 from utils.loader import dp
+from aiogram.dispatcher.filters.builtin import Command
 
 from utils.dischan import sendText, sendPhoto, sendVideo
 
 from utils import logger
+from data.config import DS_INVITE_LINK
 
 
 async def parse(msg):
@@ -47,6 +51,13 @@ async def video_in_channel(msg: types.Message):
         await sendVideo(text, video_path, msg.message_id)
     except Exception as e:
         logger.logging.error(e)
+
+
+@dp.message_handler(Command(["link", "start", "help"]))
+async def get_link(msg: types.Message):
+    text = f"Ссылка для приглашения бота:\n<code>{DS_INVITE_LINK}</code>"
+    reply_markup = InlineKeyboardMarkup().add(InlineKeyboardButton("🤖 Пригласить", url=DS_INVITE_LINK))
+    await msg.answer(text=text, reply_markup=reply_markup, parse_mode=types.ParseMode.HTML)
 
 
 if __name__ == "__main__":
