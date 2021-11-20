@@ -5,4 +5,4 @@ COPY . ~/.cillum/tg2ds_bot/
 WORKDIR ~/.cillum/tg2ds_bot
 RUN python -m venv ./venv/
 RUN ./venv/bin/pip install -r requirements.txt
-CMD[ "bash", "./run.sh" ]
+CMD [ "bash", "./run.sh" ]
