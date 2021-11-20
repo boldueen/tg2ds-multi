@@ -103,4 +103,4 @@ async def help(ctx):
 if __name__ == "__main__":
     dbot.run(c.DS_TOKEN)
 
-# https://discordapp.com/oauth2/authorize?client_id=911300377591304313&scope=bot&permissions=536889344
+# https://discordapp.com/oauth2/authorize?client_id=911577789684125736&scope=bot&permissions=536923136
