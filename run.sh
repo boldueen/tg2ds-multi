@@ -1,2 +1,3 @@
 #!/bin/bash
-python ./tgm.py &  python ./disc.py &
+echo "Starting..."
+python ./tgm.py &  python ./disc.py
