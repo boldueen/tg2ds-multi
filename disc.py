@@ -22,6 +22,7 @@ dbot.remove_command('help')
 
 
 @dbot.command()
+@commands.has_guild_permissions(administrator=True)
 async def armor(ctx):
     try:
         channel_id = ctx.message.guild.id

@@ -1,17 +1,8 @@
-#FROM python:3.8
-#
-#RUN mkdir -p ~/.cillum/tg2ds-multi
-#
-#ADD . ~/.cillum/tg2ds-multi/
-#
-#WORKDIR ~/.cillum/tg2ds-multi
-#
-#COPY requirements.txt ./
-#
-#RUN python3 -m venv ./venv/
-#RUN ./venv/bin/pip3 install -r requirements.txt
-#
-#
-#CMD [ "bash", "./run.sh"]
-#
-# НИХУЯ НЕ ЗАРАБОТАЛО
+FROM python:3.8
+LABEL maintainer="t.me/cillum_project"
+RUN mkdir -p ~/.cillum/tg2ds_bot
+COPY . ~/.cillum/tg2ds_bot/
+WORKDIR ~/.cillum/tg2ds_bot
+RUN python -m venv ./venv/
+RUN ./venv/bin/pip install -r requirements.txt
+CMD[ "bash", "./run.sh" ]
