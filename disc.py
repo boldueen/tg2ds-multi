@@ -1,7 +1,8 @@
 import requests
-from discord import Embed, Colour
 
 from data import config as c
+
+from discord import Embed, Colour
 from utils.loader import dbot, hooks
 
 from utils import logger

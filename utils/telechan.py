@@ -1,5 +1,5 @@
-from utils.loader import dp
 from aiogram import types
+from utils.loader import dp
 
 from utils.dischan import sendText, sendPhoto, sendVideo
 

@@ -3,9 +3,9 @@
 # WEB-pages: uadd.me/mdpanf
 
 from aiogram import executor
+
+from utils import logger, telechan
 from utils.loader import dp
-from utils import logger
-from utils import telechan
 
 logo = f"""\033[92m
   ____ _ _ _       \033[33mby\033[92m          ____            _           _
@@ -18,5 +18,7 @@ logo = f"""\033[92m
 
 
 if __name__ == '__main__':
-    print(logo)
+    logger.logging.debug(logger.__name__ + " imported successfully")
+    logger.logging.info(logo)
+    logger.logging.debug(telechan.__name__ + " imported successfully")
     executor.start_polling(dp)

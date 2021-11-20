@@ -13,7 +13,7 @@ client = Client()
 dbot = commands.Bot(command_prefix='!')
 
 hooks = Hooks()
-hooks.create_table_hooks()  # Create table if not exist
+hooks.create_table_hooks()
 
 
 if __name__ == "__main__":
