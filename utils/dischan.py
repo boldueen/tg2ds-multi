@@ -9,9 +9,8 @@ from utils.loader import hooks
 async def sendText(text: str):
     print("Text")
     async with aiohttp.ClientSession() as session:
-        webhook_urls = hooks.all_hooks()
-        print(webhook_urls)
-        for url in webhook_urls[0]:
+        urls = hooks.all_hooks()[0]
+        for url in urls:
             wh = Webhook.from_url(url, adapter=AsyncWebhookAdapter(session))
             e = Embed(title="📑 Новости", description=text, color=Colour.blue())
             await wh.send(embed=e)
@@ -19,16 +18,20 @@ async def sendText(text: str):
 
 async def sendPhoto(text: str, photo_path: str):
     async with aiohttp.ClientSession() as session:
-        for url in hooks.all_hooks()[0]:
+        urls = hooks.all_hooks()[0]
+        for url in urls:
             wh = Webhook.from_url(url, adapter=AsyncWebhookAdapter(session))
             e = Embed(title="📑 Новости", description=text, color=Colour.blue())
+            e.set_footer(text="Test", icon_url="https://i.comss.pics/2021/11/13/CillumLogo2f869011530d4a42.png")
+            e.set_image(url=f"attachment://{photo_path}")
             await wh.send(embed=e, file=File(photo_path))
             os.remove(photo_path)
 
 
 async def sendVideo(text: str, video_path: str):
     async with aiohttp.ClientSession() as session:
-        for url in hooks.all_hooks()[0]:
+        urls = hooks.all_hooks()[0]
+        for url in urls:
             wh = Webhook.from_url(url, adapter=AsyncWebhookAdapter(session))
             e = Embed(title="📑 Новости", description=text, color=Colour.blue())
             await wh.send(embed=e, file=File(video_path))

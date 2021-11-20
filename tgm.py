@@ -4,6 +4,7 @@
 
 from aiogram import executor
 from utils.loader import dp
+from utils import logger
 from utils import telechan
 
 logo = f"""\033[92m
@@ -18,4 +19,4 @@ logo = f"""\033[92m
 
 if __name__ == '__main__':
     print(logo)
-    executor.start_polling(dp, skip_updates=True)
+    executor.start_polling(dp)
